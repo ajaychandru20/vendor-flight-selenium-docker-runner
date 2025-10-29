@@ -1,15 +1,21 @@
 pipeline{
     agent any
     stages{
-        stage('Docker Compose Up'){
+        stage('Docker Compose Up Grid'){
             steps{
-                sh 'docker compose up'
+                sh "docker compose -f grid.yaml up -d"
             }
         }
-        stage('Docker Compose Down'){
+        stage('Run Test Suites'){
             steps{
-                sh 'docker compose down'
+                sh "docker compose -f test-suites.yaml up"
             }
+        }
+    }
+    post{
+        always{
+            sh "docker compose -f test-suites.yaml down"
+            sh "docker compose -f grid.yaml down"
         }
     }
 }
