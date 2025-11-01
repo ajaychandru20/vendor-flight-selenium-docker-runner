@@ -1,2 +1,3 @@
 # ignore the test-output directory
 test-output
+test_suite_logs.txt

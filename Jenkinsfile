@@ -12,11 +12,14 @@ pipeline{
         stage('Run Test Suites'){
             steps{
                 sh "docker compose -f test-suite.yaml up --abort-on-container-exit"
+                sleep time: 5, unit: 'SECONDS'
             }
         }
     }
     post{
         always{
+            sh "docker compose -f test-suite.yaml logs --no-color > test_suite_logs.txt"
+            archiveArtifacts artifacts: 'test_suite_logs.txt', followSymlinks: false
             sh "docker compose -f test-suite.yaml down"
             sh "docker compose -f grid.yaml down"
             archiveArtifacts artifacts: 'output/flight-booking/emailable-report.html', followSymlinks: false
