@@ -12,8 +12,8 @@ pipeline{
         stage('Run Test Suites'){
             steps{
                 sh "docker compose -f test-suite.yaml up --abort-on-container-exit"
-                script {
-                    if(fileExists('output/flight-reservation/testng-failed.xml') || fileExists('output/vendor-portal/testng-failed.xml')){
+                script {     
+                    if(fileExists('output/flight-booking/testng-failed.xml') || fileExists('output/vendor-portal/testng-failed.xml')){
                         error('failed tests found')
                     }
                 }
