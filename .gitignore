@@ -1,4 +1,4 @@
 # ignore the test-output directory
 test-output
-# output
+output
 test_suite_logs.txt
