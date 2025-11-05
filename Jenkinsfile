@@ -1,5 +1,7 @@
 pipeline{
-    agent any
+    agent {
+        label 'ec2-fleet'
+    }
     parameters {
         choice choices: ['chrome', 'firefox'], description: 'Select the Browser', name: 'BROWSER'
     }
