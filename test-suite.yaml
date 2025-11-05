@@ -8,7 +8,7 @@ services:
       - THREAD_COUNT=1
       - TEST_XML_FILE=test-suite-vendorapplication.xml
     volumes:
-      - ./output/vendor-portal:/home/selenium-docker/test-output
+      - ./test-output/vendor-portal:/home/selenium-docker/test-output
   flight-booking:
     image: ajayc20/selenium-and-docker:latest
     environment:
@@ -18,4 +18,4 @@ services:
       - THREAD_COUNT=1
       - TEST_XML_FILE=test-suite-flightbooking.xml
     volumes:
-      - ./output/flight-booking:/home/selenium-docker/test-output
+      - ./test-output/flight-booking:/home/selenium-docker/test-output
